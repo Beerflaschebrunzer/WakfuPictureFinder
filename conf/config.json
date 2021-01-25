@@ -1,0 +1,7 @@
+{
+  "data_location": "data/",
+  "start": 1203021,
+  "end" : 10000000,
+  "separator" : "\n",
+  "source_file_path" : "conf/gfxId_liste.txt"
+}
