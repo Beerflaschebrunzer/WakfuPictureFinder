@@ -53,16 +53,17 @@ class FileCrawler
         $url        =   $this->oConfig->sBaseUrl.$iFileIndex.$this->oConfig->sBaseExtension;
         $sFileName  =   $this->oConfig->sBaseLocation.$iFileIndex.$this->oConfig->sBaseExtension;
 
-        $this->oLogger->info("Processing $iFileIndex");
-
         if ($this->urlExists ($url))
         {
             if(file_put_contents($sFileName,file_get_contents($url)))
             {
-                echo "$sFileName";
-                $this->oLogger->info("\tFile downloaded successfully");
+                $this->oLogger->success("File ".$sFileName.$this->sBaseExtension." downloaded successfully");
             }
+            else
+                $this->oLogger->error("Could not download ".$sFileName.$this->sBaseExtension);
         }
+        else
+            $this->oLogger->warning("Icon for this item does not exist ($sFileName)");
     }
 
     function urlExists($sUrl)
